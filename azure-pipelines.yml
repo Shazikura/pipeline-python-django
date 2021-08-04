@@ -39,7 +39,7 @@ stages:
                 scriptLocation: 'inlineScript'
                 inlineScript: |
                     az acr login -n ACRlearning --expose-token
-                    az container create --resource-group 123 --name acinstance --image acrlearning.azurecr.io/nginx  --ports 80
+                    az container create --resource-group 123 --name acinstance --image acrlearning.azurecr.io/nginx  --ports 80 --dns?
 
   - stage: Test
     displayName: Testing Stage
@@ -47,8 +47,11 @@ stages:
       - job: Testingjob
         displayName: Testing Stage - Job.1
         steps:
-          - task: PowerShell@2
-            inputs:
-              targetType: 'inline'
-              script: |
-               Write-Host "Hello World"
+        - task: AzureCLI@2
+          inputs:
+                azureSubscription: 'Free Trial(21ffa5d8-e7c7-481b-8a23-e5f94872f1fd)'
+                scriptType: 'ps'
+                scriptLocation: 'inlineScript'
+                inlineScript: |
+                    $reply = invoke-webrequest site?..
+                    $reply.statuscode
