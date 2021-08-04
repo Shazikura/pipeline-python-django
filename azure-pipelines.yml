@@ -11,7 +11,8 @@ stages:
       - job: Buildjob
         displayName: nameusedinUI-buildjob
         steps:
-          - script: Write-Host "Hello World"
+          - script: |
+             Write-Host "Hello World"
   - stage: Test
     displayName: nameusedinUI-test
     dependsOn: Build
@@ -19,7 +20,8 @@ stages:
       - job: Testjob
         displayName: nameusedinUI-testjob
         steps:
-          - script: Write-Host "Hello World"
+          - script: |
+             Write-Host "Hello World"
   - stage: Deploy
     displayName: nameusedinUI-deploy
     dependsOn: Test
@@ -27,4 +29,5 @@ stages:
       - job: Deployjob
         displayName: nameusedinUI-deployjob
         steps:
-          - script: Write-Host "Hello World"
+          - script: |
+             Write-Host "Hello World"
