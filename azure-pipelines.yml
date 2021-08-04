@@ -20,12 +20,13 @@ stages:
       - job: Testjob
         displayName: nameusedinUI-testjob
         continueOnError: false
-        
+        steps:
+          - script: 'Write-Host "hello world!'
   - stage: Deploy
     displayName: nameusedinUI-deploy
     dependsOn: Test
     jobs:
-      - deployment: Deployjob
+      - job: Deployjob
         displayName: nameusedinUI-deployjob
-        environment: # target environment name and optionally a resource name to record the deployment history; format: <environment-name>.<resource-name> strategy:
-
+        steps:
+          - script: 'Write-Host "hello world!'
