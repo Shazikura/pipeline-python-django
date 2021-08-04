@@ -16,24 +16,30 @@ stages:
               targetType: 'inline'
               script: |
                Write-Host "Hello World"
+
+  - stage: Deploy
+    displayName: nameusedinUI-deploy
+    dependsOn: Test
+    jobs:
+      - deployment: Deployjob
+        displayName: nameusedinUI-deployjob
+        environment: String 
+        strategy:
+         runOnce: 
+          deploy:
+            steps:
+             - task: PowerShell@2
+               inputs:
+                targetType: 'inline'
+                script: |
+                 Write-Host "Hello World"
+
   - stage: Test
     displayName: nameusedinUI-test
     dependsOn: Build
     jobs:
       - job: Testjob
         displayName: nameusedinUI-testjob
-        steps:
-          - task: PowerShell@2
-            inputs:
-              targetType: 'inline'
-              script: |
-               Write-Host "Hello World"
-  - stage: Deploy
-    displayName: nameusedinUI-deploy
-    dependsOn: Test
-    jobs:
-      - job: Deployjob
-        displayName: nameusedinUI-deployjob
         steps:
           - task: PowerShell@2
             inputs:
