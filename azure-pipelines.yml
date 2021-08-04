@@ -1,12 +1,29 @@
-      trigger:
+trigger:
 - master
 
 pool:
-  vmImage: windows-latest
-- task: PowerShell@2
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your PowerShell commands here.
-      
-      Write-Host "Hello World"
+  name: Default
+
+stages:
+  - stage: Build
+    displayName: nameusedinUI-build
+    jobs: 
+      - job: Build
+        displayName: nameusedinUI-buildjob
+        continueOnError: false
+        steps:
+          - script: 'Write-Host "hello world!'
+  - stage: Test
+    displayName: nameusedinUI-test
+    dependsOn: Build
+    jobs:
+      - job: Test
+        displayName: nameusedinUI-testjob
+        continueOnError: false
+  - stage: Deploy
+    displayName: nameusedinUI-deploy
+    dependsOn: 
+    jobs:
+      - deployment: Deploy
+        displayName: nameusedinUI-deployjob
+
