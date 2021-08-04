@@ -20,8 +20,7 @@ stages:
       - job: Test
         displayName: nameusedinUI-testjob
         continueOnError: false
-        steps:
-          - 
+        
   - stage: Deploy
     displayName: nameusedinUI-deploy
     dependsOn: 
