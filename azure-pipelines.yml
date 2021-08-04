@@ -20,10 +20,13 @@ stages:
       - job: Test
         displayName: nameusedinUI-testjob
         continueOnError: false
+        steps:
+          - 
   - stage: Deploy
     displayName: nameusedinUI-deploy
     dependsOn: 
     jobs:
       - deployment: Deploy
         displayName: nameusedinUI-deployjob
+        environment: # target environment name and optionally a resource name to record the deployment history; format: <environment-name>.<resource-name> strategy:
 
