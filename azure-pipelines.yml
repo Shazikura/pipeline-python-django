@@ -8,7 +8,7 @@ stages:
   - stage: Build
     displayName: nameusedinUI-build
     jobs: 
-      - job: Build
+      - job: Buildjob
         displayName: nameusedinUI-buildjob
         continueOnError: false
         steps:
@@ -17,15 +17,15 @@ stages:
     displayName: nameusedinUI-test
     dependsOn: Build
     jobs:
-      - job: Test
+      - job: Testjob
         displayName: nameusedinUI-testjob
         continueOnError: false
         
   - stage: Deploy
     displayName: nameusedinUI-deploy
-    dependsOn: 
+    dependsOn: Test
     jobs:
-      - deployment: Deploy
+      - deployment: Deployjob
         displayName: nameusedinUI-deployjob
         environment: # target environment name and optionally a resource name to record the deployment history; format: <environment-name>.<resource-name> strategy:
 
