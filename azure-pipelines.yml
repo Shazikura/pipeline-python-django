@@ -10,7 +10,6 @@ stages:
     jobs: 
       - job: Buildjob
         displayName: nameusedinUI-buildjob
-        continueOnError: false
         steps:
           - script: Write-Host "Hello World"
   - stage: Test
@@ -19,7 +18,6 @@ stages:
     jobs:
       - job: Testjob
         displayName: nameusedinUI-testjob
-        continueOnError: false
         steps:
           - script: Write-Host "Hello World"
   - stage: Deploy
