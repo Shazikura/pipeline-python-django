@@ -10,6 +10,8 @@ stages:
     jobs: 
       - job: Buildjob
         displayName: Build Stage - Job.1
+        continueOnError: false
+        variables: $(Build.BuildNumber)
         steps:
         - task: PowerShell@2
           inputs:
@@ -30,6 +32,8 @@ stages:
     jobs:
       - deployment: DeploymentJob
         displayName: Deployment Stage - Job.1
+        dependsOn: Build
+        continueOnError: false
         environment: String 
         strategy:
          runOnce: 
@@ -49,6 +53,7 @@ stages:
     jobs:
       - job: Testingjob
         displayName: Testing Stage - Job.1
+        dependsOn: Deploy
         steps:
         - task: AzureCLI@2
           inputs:
