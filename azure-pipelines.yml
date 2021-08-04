@@ -6,10 +6,10 @@ pool:
 
 stages:
   - stage: Build
-    displayName: nameusedinUI-build
+    displayName: Build Stage
     jobs: 
       - job: Buildjob
-        displayName: nameusedinUI-buildjob
+        displayName: Build Stage - Job.1
         steps:
         - task: AzureCLI@2
           inputs:
@@ -23,10 +23,10 @@ stages:
                   docker push ACRlearning.azurecr.io/nginx
 
   - stage: Deploy
-    displayName: nameusedinUI-deploy
+    displayName: Deployment Stage
     jobs:
-      - deployment: Deployjob
-        displayName: nameusedinUI-deployjob
+      - deployment: DeploymentJob
+        displayName: Deployment Stage - Job.1
         environment: String 
         strategy:
          runOnce: 
@@ -39,10 +39,10 @@ stages:
                  Write-Host "Hello World"
 
   - stage: Test
-    displayName: nameusedinUI-test
+    displayName: Testing Stage
     jobs:
-      - job: Testjob
-        displayName: nameusedinUI-testjob
+      - job: Testingjob
+        displayName: Testing Stage - Job.1
         steps:
           - task: PowerShell@2
             inputs:
