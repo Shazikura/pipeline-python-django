@@ -19,7 +19,6 @@ stages:
 
   - stage: Deploy
     displayName: nameusedinUI-deploy
-    dependsOn: Test
     jobs:
       - deployment: Deployjob
         displayName: nameusedinUI-deployjob
@@ -36,7 +35,6 @@ stages:
 
   - stage: Test
     displayName: nameusedinUI-test
-    dependsOn: Build
     jobs:
       - job: Testjob
         displayName: nameusedinUI-testjob
