@@ -11,7 +11,6 @@ stages:
       - job: Buildjob
         displayName: Build Stage - Job.1
         continueOnError: false
-        variables: $(Build.BuildNumber)
         steps:
         - task: PowerShell@2
           inputs:
