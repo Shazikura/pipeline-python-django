@@ -17,7 +17,7 @@ stages:
             scriptType: 'ps'
             scriptLocation: 'inlineScript'
             inlineScript: |
-                  az acr login -n ACRlearning --expose-token
+                  az acr login -n ACRlearning
                   docker login acrlearning.azurecr.io --username ACRlearning --password V4PwU/lioQMTDcVupT25CULcoED2DXjQ
                   docker build -t nginx . 
                   docker push acrlearning.azurecr.io/nginx
